@@ -17,7 +17,7 @@ Let's compare them using everything both are using.
 </p> -->
 
 <p align="center">
-  <em>Example taken from paper <a href="https://arxiv.org/pdf/2604.21896">Nemobot Games</a></em>
+  <em>Example taken from paper <a href="https://arxiv.org/pdf/2604.21896">Nemobot Games</a> & <a href="https://pdfcoffee.com/atp-1-d-vol-i-pdf-free.html">ATP-1 NATO</a></em> 
 </p>
 
 <table style="width: 100%;">
@@ -29,9 +29,40 @@ Let's compare them using everything both are using.
     <td width="50%"><img src="images/Fig1_unstructured.png" alt="Unstructured Layout" width="100%"/></td>
     <td width="50%"><img src="images/Fig1_docling.png" alt="Docling Layout" width="100%"/></td>
   </tr>
+
+
+  <tr>
+    <td width="50%"><img src="images/Fig2_unstructured.png" alt="Unstructured Layout" width="100%"/></td>
+    <td width="50%"><img src="images/Fig2_docling.png" alt="Docling Layout" width="100%"/></td>
+  </tr>
   <tr>
     <td width="50%">Unstructured divided the picture into text regions</td>
     <td width="50%">Docling's robustness helps in preserving the full figure as one unit</td>
+  </tr>
+
+
+  <tr>
+    <td width="50%"><img src="images/Fig3_unstructured.png" alt="Unstructured Layout" width="100%"/></td>
+    <td width="50%"><img src="images/Fig3_docling.png" alt="Docling Layout" width="100%"/></td>
+  </tr>
+  <tr>
+    <td width="50%">Missed the Table as it is Inverted.</td>
+    <td width="50%">Docling captures it well.</td>
+  </tr>
+
+
+  <tr>
+    <td width="50%"><img src="images/Fig4_unstructured.png" alt="Unstructured Layout" width="100%"/></td>
+    <td width="50%"><img src="images/Fig4_docling.png" alt="Docling Layout" width="100%"/></td>
+  </tr>
+
+  <tr>
+    <td width="50%"><img src="images/Fig5_unstructured.png" alt="Unstructured Layout" width="100%"/></td>
+    <td width="50%"><img src="images/Fig5_docling.png" alt="Docling Layout" width="100%"/></td>
+  </tr>
+  <tr>
+    <td width="50%">Part of Figure is captured</td>
+    <td width="50%">Docling Captures the full Figure</td>
   </tr>
   
 </table>
