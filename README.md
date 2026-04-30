@@ -30,13 +30,10 @@ Let's compare them using everything both are using.
     <td width="50%"><img src="images/Fig1_docling.png" alt="Docling Layout" width="100%"/></td>
   </tr>
   <tr>
-    <td width="50%" markdown="1">
-    </td>
-  </tr>
-  <tr>
     <td width="50%">Unstructured divided the picture into text regions</td>
     <td width="50%">Docling's robustness helps in preserving the full figure as one unit</td>
   </tr>
+  
 </table>
 
 ---
@@ -83,8 +80,6 @@ $$Qn (4-1)/2 (1— g?)(d-2)/2 eee. _ -P(d/2) fx(x) = Dea Uv l= ed) 2292$$
 Lemma 1 (coordinate distribution of random point on hypersphere) . For any positive integer d if x ∈ S d -1 is a random variable uniformly distributed over the unit hypersphere, then for any j ∈ [ d ] the coordinate x j follows the following (scaled/shifted) Beta distribution:
 
 $$x_{j} \sim f_{X}(x) := \frac{\Gamma(d/2)}{\sqrt{\pi} \cdot \Gamma((d-1)/2)} \left(1 - x^{2}\right)^{(d-3)/2}$$
-
-$$u_{i} \cdot u_{j} = f_{X}(x) := \frac{\Gamma(d/2)}{\sqrt{\pi} \cdot \Gamma((d-1)/2)} \left(1 - x^{2}\right)^{(d-3)/2}$$
 
 In high dimensions this beta distribtion converges to the normal distribution f X ( · ) →N (0 , 1 /d ) .
 
