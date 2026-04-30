@@ -67,6 +67,7 @@ Let's compare them using everything both are using.
   
 </table>
 
+
 ---
 
 ## Equations
@@ -127,5 +128,48 @@ $$f _ { X } ( x ) = \frac { \frac { 2 \pi ^ { ( d - 1 ) / 2 } } { \Gamma ( ( d -
 </table>
 
 ---
+
+## Algorithm
+
+<!-- <p align="center">
+  <img src="images/turbo_quant_equation.png" width="70%">
+</p> -->
+
+<p align="center">
+  <em>Example taken from paper <a href="https://arxiv.org/pdf/2604.21896">Nemobot Games</a></em>
+</p>
+
+<table style="width: 100%;">
+  <tr>
+    <th style="text-align: center; width: 50%;">Unstructured Layout</th>
+    <th style="text-align: center; width: 50%;">Docling Layout</th>
+  </tr>
+  <tr>
+    <td width="50%"><img src="images/Algo_unstructured.png" alt="Unstructured Layout" width="100%"/></td>
+    <td width="50%"><img src="images/Algo_docling.png" alt="Docling Layout" width="100%"/></td>
+  </tr>
+  <tr>
+    <td width="50%" markdown="1">
+
+**Unstructured Output:**
+
+Algorithm 1 Interactive AI Training with Nemobot 1: H+ initial heuristic,k+1,R<¢0 2: while true do 3 for i in [1, count(D*)] do 4: R.ada(R¥ + reward(D*)) 5: end for 6 if loss(R) <7 then 7 break 8 end if 9: H* — update(H*1, R) 10: k«+(k+1) 11: record < H*,R> 12: R+<9 13: end while 14: return H*
+
+  </td>
+<td width="50%" style="word-wrap: break-word; overflow-wrap: break-word;">
+
+**Docling Output:**
+## Algorithm 1 Interactive AI Training with Nemobot
+<div style="overflow-x: auto; font-size: 0.75em;">
+1: H 0 ← initial heuristic , k ← 1 , R ←∅ 2: while true do 3: for i in [1 , count ( D k )] do 4: R. add ( R k i ← reward ( D k i )) 5: end for 6: if loss ( R ) ≤ τ then 7: break 8: end if 9: H k ← update ( H k -1 , R ) 10: k ← ( k +1) 11: record < H k , R > 12: R ←∅ 13: end while 14: return H k
+
+</div>
+</td>
+  </tr>
+  <tr>
+    <td width="50%">Detected everything as Text</td>
+    <td width="50%">Detceted both Text and code part</td>
+  </tr>
+</table>
 
 
