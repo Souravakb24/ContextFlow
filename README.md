@@ -10,11 +10,42 @@ Let's compare them using everything both are using.
 
 ---
 
-## Equations
+## Figures
+
+<!-- <p align="center">
+  <img src="images/Fig1_original.png" width="70%">
+</p> -->
 
 <p align="center">
-  <img src="images/turbo_quant_equation.png" width="70%">
+  <em>Example taken from paper <a href="https://arxiv.org/pdf/2604.21896">Nemobot Games</a></em>
 </p>
+
+<table style="width: 100%;">
+  <tr>
+    <th style="text-align: center; width: 50%;">Unstructured Layout</th>
+    <th style="text-align: center; width: 50%;">Docling Layout</th>
+  </tr>
+  <tr>
+    <td width="50%"><img src="images/Fig1_unstructured.png" alt="Unstructured Layout" width="100%"/></td>
+    <td width="50%"><img src="images/Fig1_docling.png" alt="Docling Layout" width="100%"/></td>
+  </tr>
+  <tr>
+    <td width="50%" markdown="1">
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">Unstructured divided the picture into text regions</td>
+    <td width="50%">Docling's robustness helps in preserving the full figure as one unit</td>
+  </tr>
+</table>
+
+---
+
+## Equations
+
+<!-- <p align="center">
+  <img src="images/turbo_quant_equation.png" width="70%">
+</p> -->
 
 <p align="center">
   <em>Example taken from paper <a href="https://arxiv.org/pdf/2504.19874">TurboQuant</a></em>
