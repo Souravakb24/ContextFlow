@@ -167,8 +167,8 @@ Algorithm 1 Interactive AI Training with Nemobot 1: H+ initial heuristic,k+1,R<Â
 </td>
   </tr>
   <tr>
-    <td width="50%">Detected everything as Text</td>
-    <td width="50%">Detceted both Text and code part</td>
+    <td width="50%">Detected everything as Text. Misread the Symbols by Irregular Characters.</td>
+    <td width="50%">Detceted both Text and code part, Proper recognisiton of Symbols/Letters . </td>
   </tr>
 </table>
 
