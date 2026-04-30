@@ -2,43 +2,48 @@
 A full Engineering Research on RAG for best custom usecase.
 
 
-#Document Parser
-we have evaluated two oepnsource Document parser framework Docling([https://docling-project.github.io/docling/](https://github.com/docling-project/docling)) and Unstructured(https://github.com/Unstructured-IO/unstructured).
+# Document Parser
 
-Lets first compare using aeverything what both are using.
+We have evaluated two open-source document parser frameworks: **Docling** ([GitHub](https://github.com/docling-project/docling)) and **Unstructured** ([GitHub](https://github.com/Unstructured-IO/unstructured)).
 
-## Equations: 
-![From TurboQuant paper layout](images/turbo_quant_equation.png)
-keep ina box{
-UNstrutured Output:
-Lemma 1 (coordinate distribution of random point on hypersphere). For any positive integer d if x € S&! is a random variable uniformly distributed over the unit hypersphere, then for any j € {d] the coordinate x; follows the following (scaled/shifted) Beta distribution:
+Let's compare them using everything both are using.
 
+---
 
-$$
-_ ri), Vr -T((d—1)/2) x; ~ fx(x): 2) 3)?
-$$
+## Equations
 
+> ![From TurboQuant paper layout](images/turbo_quant_equation.png)
+> Example taken from paper [TurboQuant](https://arxiv.org/pdf/2504.19874)
 
-In high dimensions this beta distribtion converges to the normal distribution fx(-) > N(0,1/d).
+---
 
+> **Unstructured Output:**
+>
+> Lemma 1 (coordinate distribution of random point on hypersphere). For any positive integer $d$, if $x \in S^{d-1}$ is a random variable uniformly distributed over the unit hypersphere, then for any $j \in [d]$ the coordinate $x_j$ follows the following (scaled/shifted) Beta distribution:
+>
+> $$ _ ri), Vr -T((d—1)/2) x; ~ fx(x): 2) 3)? $$
+>
+> In high dimensions this beta distribution converges to the normal distribution $f_X(\cdot) \to \mathcal{N}(0, 1/d)$.
+>
+> **Proof.** $f_X(x)$ equals the ratio of the area of a sphere with radius $\sqrt{1 - x^2}$ in dimension $d-1$ to the volume of a unit sphere in dimension $d$ scaled down by $1/\sqrt{1-x^2}$ (by Pythagorean theorem). Therefore,
+>
+> $$ Qn (4-1)/2 (1— g?)(d-2)/2 eee. _ -P(d/2) fx(x) = Dea Uv l= ed) 2292 $$
 
-Proof. fx(a) equals the ratio of the area of a sphere with radius V1 — x? in dimension d— 1 to the volume of a unit sphere in dimension d scaled down by 1/V1— x? (by Pythagorean theorem). Therefore,
+### Unstructured couls not able to parse the equation as it uses redering the equation from text only. (No specific Equation Recognition model is used)
+---
 
+> **Docling Output:**
+>
+> Lemma 1 (coordinate distribution of random point on hypersphere). For any positive integer $d$, if $x \in S^{d-1}$ is a random variable uniformly distributed over the unit hypersphere, then for any $j \in [d]$ the coordinate $x_j$ follows the following (scaled/shifted) Beta distribution:
+>
+> $$x_{j} \sim f_{X}(x) := \frac{\Gamma(d/2)}{\sqrt{\pi} \cdot \Gamma((d-1)/2)} \left(1 - x^{2}\right)^{(d-3)/2}$$
+>
+> $$u_{i} \cdot u_{j} = f_{X}(x) := \frac{\Gamma(d/2)}{\sqrt{\pi} \cdot \Gamma((d-1)/2)} \left(1 - x^{2}\right)^{(d-3)/2}$$
+>
+> In high dimensions this beta distribution converges to the normal distribution $f_X(\cdot) \to \mathcal{N}(0, 1/d)$.
+>
+> **Proof.** $f_X(x)$ equals the ratio of the area of a sphere with radius $\sqrt{1 - x^2}$ in dimension $d-1$ to the volume of a unit sphere in dimension $d$ scaled down by $1/\sqrt{1-x^2}$ (by Pythagorean theorem). Therefore,
+>
+> $$f_{X}(x) = \frac{\dfrac{2\pi^{(d-1)/2}}{\Gamma((d-1)/2)} \cdot (1 - x^{2})^{(d-2)/2}}{\dfrac{2\pi^{d/2}}{\Gamma(d/2)}} \cdot \frac{1}{\sqrt{1 - x^{2}}} = \frac{\Gamma(d/2)}{\sqrt{\pi} \cdot \Gamma((d-1)/2)} \left(1 - x^{2}\right)^{(d-3)/2}$$
 
-$$
-Qn (4-1)/2 (1— g?)(d-2)/2 eee. _ -P(d/2) fx(x) = Dea Uv l= ed) 2292
-$$
-}
-
-keep in a box{
-DOcling output:
-Lemma 1 (coordinate distribution of random point on hypersphere) . For any positive integer d if x ∈ S d -1 is a random variable uniformly distributed over the unit hypersphere, then for any j ∈ [ d ] the coordinate x j follows the following (scaled/shifted) Beta distribution:
-
-$$x _ { j } \sim f _ { X } ( x ) \colon = \frac { \Gamma ( d / 2 ) } { \sqrt { \pi } \cdot \Gamma ( ( d - 1 ) / 2 ) } \left ( 1 - x ^ { 2 } \right ) ^ { ( d - 3 ) / 2 } . \\ \\ u _ { i } \cdot u _ { j } = f _ { X } ( x ) \colon = \frac { \Gamma ( d / 2 ) } { \sqrt { \pi } \cdot \Gamma ( ( d - 1 ) / 2 ) } \left ( 1 - x ^ { 2 } \right ) ^ { ( d - 3 ) / 2 } .$$
-
-In high dimensions this beta distribtion converges to the normal distribution f X ( · ) →N (0 , 1 /d ) .
-
-Proof. f X ( x ) equals the ratio of the area of a sphere with radius √ 1 -x 2 in dimension d -1 to the volume of a unit sphere in dimension d scaled down by 1 / √ 1 -x 2 (by Pythagorean theorem). Therefore,
-
-$$f _ { X } ( x ) = \frac { \frac { 2 \pi ^ { ( d - 1 ) / 2 } } { \Gamma ( ( d - 1 ) / 2 ) } \cdot ( 1 - x ^ { 2 } ) ^ { ( d - 2 ) / 2 } } { \frac { 2 \pi ^ { d / 2 } } { \Gamma ( d / 2 ) } } \cdot 1 / \sqrt { 1 - x ^ { 2 } } = \frac { \Gamma ( d / 2 ) } { \sqrt { \pi } \cdot \Gamma ( ( d - 1 ) / 2 ) } \left ( 1 - x ^ { 2 } \right ) ^ { ( d - 3 ) / 2 } .$$
-}
+### Docling uses VLM model for equation recognition from image to text. [CodeFormulaV2](https://huggingface.co/docling-project/CodeFormulaV2)
