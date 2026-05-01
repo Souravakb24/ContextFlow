@@ -1,96 +1,100 @@
-# GET BEST FOR YOUR RAG
-A full Engineering Research on RAG for best custom usecase.
+# RAG Document Parser Benchmark: Docling vs Unstructured
 
-
-# Document Parser
-
-We have evaluated two open-source document parser frameworks: **Docling** ([GitHub](https://github.com/docling-project/docling)) and **Unstructured** ([GitHub](https://github.com/Unstructured-IO/unstructured)).
-
-Let's compare them using everything both are using.
+> A full engineering research evaluation on document parsers for custom RAG use cases.
 
 ---
 
-## Figures
+## Overview
 
-<!-- <p align="center">
-  <img src="images/Fig1_original.png" width="70%">
-</p> -->
+This report benchmarks two open-source document parsing frameworks:
+
+- **Docling** — [GitHub](https://github.com/docling-project/docling)
+- **Unstructured** — [GitHub](https://github.com/Unstructured-IO/unstructured)
+
+Each section evaluates a specific document element type — Figures, Equations, Algorithms, and Tables — comparing side-by-side how each parser handles real-world examples from academic papers.
+
+---
+
+## Summary
+
+| Element    | Winner  | Reason |
+|------------|---------|--------|
+| Figures    | Docling | Preserves figures as single units; Unstructured splits them into text regions |
+| Equations  | Docling | Uses a dedicated VLM model ([CodeFormulaV2](https://huggingface.co/docling-project/CodeFormulaV2)); Unstructured has no equation recognition |
+| Algorithms | Docling | Correctly identifies code blocks and symbols; Unstructured treats everything as plain text |
+| Tables     | Docling | Produces a clean, well-defined schema via [TableFormer](https://huggingface.co/docling-project/docling-models/tree/main/model_artifacts/tableformer); Unstructured outputs raw HTML with no clear structure |
+
+---
+
+## 1. Figures
 
 <p align="center">
-  <em>Example taken from paper <a href="https://arxiv.org/pdf/2604.21896">Nemobot Games</a> & <a href="https://pdfcoffee.com/atp-1-d-vol-i-pdf-free.html">ATP-1 NATO</a></em> 
+  <em>Examples taken from <a href="https://arxiv.org/pdf/2604.21896">Nemobot Games</a> &amp; <a href="https://pdfcoffee.com/atp-1-d-vol-i-pdf-free.html">ATP-1 NATO</a></em>
 </p>
 
-<table style="width: 100%;">
+<table style="width: 100%; table-layout: fixed;">
   <tr>
-    <th style="text-align: center; width: 50%;">Unstructured Layout</th>
-    <th style="text-align: center; width: 50%;">Docling Layout</th>
-  </tr>
-  <tr>
-    <td width="50%"><img src="images/Fig1_unstructured.png" alt="Unstructured Layout" width="100%"/></td>
-    <td width="50%"><img src="images/Fig1_docling.png" alt="Docling Layout" width="100%"/></td>
-  </tr>
-
-
-  <tr>
-    <td width="50%"><img src="images/Fig2_unstructured.png" alt="Unstructured Layout" width="100%"/></td>
-    <td width="50%"><img src="images/Fig2_docling.png" alt="Docling Layout" width="100%"/></td>
-  </tr>
-  <tr>
-    <td width="50%">Unstructured divided the picture into text regions</td>
-    <td width="50%">Docling's robustness helps in preserving the full figure as one unit</td>
-  </tr>
-
-
-  <tr>
-    <td width="50%"><img src="images/Fig3_unstructured.png" alt="Unstructured Layout" width="100%"/></td>
-    <td width="50%"><img src="images/Fig3_docling.png" alt="Docling Layout" width="100%"/></td>
-  </tr>
-  <tr>
-    <td width="50%">Missed the Table as it is Inverted.</td>
-    <td width="50%">Docling captures it well.</td>
-  </tr>
-
-
-  <tr>
-    <td width="50%"><img src="images/Fig4_unstructured.png" alt="Unstructured Layout" width="100%"/></td>
-    <td width="50%"><img src="images/Fig4_docling.png" alt="Docling Layout" width="100%"/></td>
+    <th style="text-align: center; width: 50%;">Unstructured</th>
+    <th style="text-align: center; width: 50%;">Docling</th>
   </tr>
 
   <tr>
-    <td width="50%"><img src="images/Fig5_unstructured.png" alt="Unstructured Layout" width="100%"/></td>
-    <td width="50%"><img src="images/Fig5_docling.png" alt="Docling Layout" width="100%"/></td>
+    <td align="center"><img src="images/Fig1_unstructured.png" alt="Unstructured Figure 1" width="90%" style="max-width: 420px;"/></td>
+    <td align="center"><img src="images/Fig1_docling.png" alt="Docling Figure 1" width="90%" style="max-width: 420px;"/></td>
+  </tr>
+
+  <tr>
+    <td align="center"><img src="images/Fig2_unstructured.png" alt="Unstructured Figure 2" width="90%" style="max-width: 420px;"/></td>
+    <td align="center"><img src="images/Fig2_docling.png" alt="Docling Figure 2" width="90%" style="max-width: 420px;"/></td>
   </tr>
   <tr>
-    <td width="50%">Part of Figure is captured</td>
-    <td width="50%">Docling Captures the full Figure</td>
+    <td align="center">⚠️ Unstructured divided the picture into separate text regions.</td>
+    <td align="center">✅ Docling preserves the full figure as a single unit.</td>
   </tr>
-  
+
+  <tr>
+    <td align="center"><img src="images/Fig3_unstructured.png" alt="Unstructured Figure 3" width="90%" style="max-width: 420px;"/></td>
+    <td align="center"><img src="images/Fig3_docling.png" alt="Docling Figure 3" width="90%" style="max-width: 420px;"/></td>
+  </tr>
+  <tr>
+    <td align="center">⚠️ Missed the table entirely because it is inverted.</td>
+    <td align="center">✅ Docling captures it correctly.</td>
+  </tr>
+
+  <tr>
+    <td align="center"><img src="images/Fig4_unstructured.png" alt="Unstructured Figure 4" width="90%" style="max-width: 420px;"/></td>
+    <td align="center"><img src="images/Fig4_docling.png" alt="Docling Figure 4" width="90%" style="max-width: 420px;"/></td>
+  </tr>
+
+  <tr>
+    <td align="center"><img src="images/Fig5_unstructured.png" alt="Unstructured Figure 5" width="90%" style="max-width: 420px;"/></td>
+    <td align="center"><img src="images/Fig5_docling.png" alt="Docling Figure 5" width="90%" style="max-width: 420px;"/></td>
+  </tr>
+  <tr>
+    <td align="center">⚠️ Only part of the figure is captured.</td>
+    <td align="center">✅ Docling captures the full figure.</td>
+  </tr>
 </table>
 
-
 ---
 
-## Equations
-
-<!-- <p align="center">
-  <img src="images/turbo_quant_equation.png" width="70%">
-</p> -->
+## 2. Equations
 
 <p align="center">
-  <em>Example taken from paper <a href="https://arxiv.org/pdf/2504.19874">TurboQuant</a></em>
+  <em>Example taken from <a href="https://arxiv.org/pdf/2504.19874">TurboQuant</a></em>
 </p>
 
-<table style="width: 100%;">
+<table style="width: 100%; table-layout: fixed;">
   <tr>
-    <th style="text-align: center; width: 50%;">Unstructured Layout</th>
-    <th style="text-align: center; width: 50%;">Docling Layout</th>
+    <th style="text-align: center; width: 50%;">Unstructured</th>
+    <th style="text-align: center; width: 50%;">Docling</th>
   </tr>
   <tr>
-    <td width="50%"><img src="images/equation_unstructured.png" alt="Unstructured Layout" width="100%"/></td>
-    <td width="50%"><img src="images/equation_docling.png" alt="Docling Layout" width="100%"/></td>
+    <td align="center"><img src="images/equation_unstructured.png" alt="Unstructured Equation" width="90%" style="max-width: 420px;"/></td>
+    <td align="center"><img src="images/equation_docling.png" alt="Docling Equation" width="90%" style="max-width: 420px;"/></td>
   </tr>
   <tr>
-    <td width="50%" markdown="1">
+    <td>
 
 **Unstructured Output:**
 
@@ -105,7 +109,7 @@ Proof. fx(a) equals the ratio of the area of a sphere with radius V1 — x? in d
 $$Qn (4-1)/2 (1— g?)(d-2)/2 eee. _ -P(d/2) fx(x) = Dea Uv l= ed) 2292$$
 
   </td>
-    <td width="50%">
+    <td>
 
 **Docling Output:**
 
@@ -122,89 +126,86 @@ $$f _ { X } ( x ) = \frac { \frac { 2 \pi ^ { ( d - 1 ) / 2 } } { \Gamma ( ( d -
   </td>
   </tr>
   <tr>
-    <td width="50%">Unstructured could not parse the equation as it renders equations from text only. (No specific Equation Recognition model is used)</td>
-    <td width="50%">Docling uses a VLM model for equation recognition from image to text. <a href="https://huggingface.co/docling-project/CodeFormulaV2">CodeFormulaV2</a></td>
+    <td align="center">⚠️ Unstructured cannot parse equations — it renders them from text only, with no dedicated equation recognition model.</td>
+    <td align="center">✅ Docling uses a VLM model for image-to-text equation recognition: <a href="https://huggingface.co/docling-project/CodeFormulaV2">CodeFormulaV2</a>.</td>
   </tr>
 </table>
 
 ---
 
-## Algorithm
-
-<!-- <p align="center">
-  <img src="images/turbo_quant_equation.png" width="70%">
-</p> -->
+## 3. Algorithms
 
 <p align="center">
-  <em>Example taken from paper <a href="https://arxiv.org/pdf/2604.21896">Nemobot Games</a></em>
+  <em>Example taken from <a href="https://arxiv.org/pdf/2604.21896">Nemobot Games</a></em>
 </p>
 
-<table style="width: 100%;">
+<table style="width: 100%; table-layout: fixed;">
   <tr>
-    <th style="text-align: center; width: 50%;">Unstructured Layout</th>
-    <th style="text-align: center; width: 50%;">Docling Layout</th>
+    <th style="text-align: center; width: 50%;">Unstructured</th>
+    <th style="text-align: center; width: 50%;">Docling</th>
   </tr>
   <tr>
-    <td width="50%"><img src="images/Algo_unstructured.png" alt="Unstructured Layout" width="100%"/></td>
-    <td width="50%"><img src="images/Algo_docling.png" alt="Docling Layout" width="100%"/></td>
+    <td align="center"><img src="images/Algo_unstructured.png" alt="Unstructured Algorithm" width="90%" style="max-width: 420px;"/></td>
+    <td align="center"><img src="images/Algo_docling.png" alt="Docling Algorithm" width="90%" style="max-width: 420px;"/></td>
   </tr>
   <tr>
-    <td width="50%" markdown="1">
+    <td>
 
 **Unstructured Output:**
 
 Algorithm 1 Interactive AI Training with Nemobot 1: H+ initial heuristic,k+1,R<¢0 2: while true do 3 for i in [1, count(D*)] do 4: R.ada(R¥ + reward(D*)) 5: end for 6 if loss(R) <7 then 7 break 8 end if 9: H* — update(H*1, R) 10: k«+(k+1) 11: record < H*,R> 12: R+<9 13: end while 14: return H*
 
   </td>
-<td width="50%" style="word-wrap: break-word; overflow-wrap: break-word;">
+    <td>
 
 **Docling Output:**
+
 ## Algorithm 1 Interactive AI Training with Nemobot
-<div style="overflow-x: auto; font-size: 0.75em;">
+
 1: H 0 ← initial heuristic , k ← 1 , R ←∅ 2: while true do 3: for i in [1 , count ( D k )] do 4: R. add ( R k i ← reward ( D k i )) 5: end for 6: if loss ( R ) ≤ τ then 7: break 8: end if 9: H k ← update ( H k -1 , R ) 10: k ← ( k +1) 11: record < H k , R > 12: R ←∅ 13: end while 14: return H k
 
-</div>
-</td>
+  </td>
   </tr>
   <tr>
-    <td width="50%">Detected everything as Text. Misread the Symbols by Irregular Characters.</td>
-    <td width="50%">Detceted both Text and code part, Proper recognisiton of Symbols/Letters . </td>
+    <td align="center">⚠️ Everything detected as plain text. Symbols are misread as irregular characters.</td>
+    <td align="center">✅ Text and code blocks detected separately. Symbols and letters recognized correctly.</td>
   </tr>
 </table>
 
 ---
 
-## Tables
+## 4. Tables
 
 <p align="center">
-  <em>Example taken from paper <a href="https://arxiv.org/pdf/2504.19874">TurboQuant</a></em>
+  <em>Example taken from <a href="https://arxiv.org/pdf/2504.19874">TurboQuant</a></em>
 </p>
 
 <table style="width: 100%; table-layout: fixed;">
   <tr>
-    <th style="text-align: center;">Unstructured Layout</th>
-    <th style="text-align: center;">Docling Layout</th>
+    <th style="text-align: center; width: 50%;">Unstructured</th>
+    <th style="text-align: center; width: 50%;">Docling</th>
   </tr>
   <tr>
-    <td><img src="images/table1_unstructured.png" width="100%"/></td>
-    <td><img src="images/table1_docling.png" width="100%"/></td>
+    <td align="center"><img src="images/table1_unstructured.png" width="90%" style="max-width: 420px;"/></td>
+    <td align="center"><img src="images/table1_docling.png" width="90%" style="max-width: 420px;"/></td>
   </tr>
 </table>
-
 
 **Unstructured Output:**
 
 <table><thead><tr><th>Full Cache</th><th>16</th><th>45.29</th><th>45.16</th><th>Llama-3.1-8B-Instruct 26.55</th><th>68.38</th><th>59.54</th><th>46.28</th><th>50.06</th></tr></thead><tbody><tr><td>KIVI</td><td></td><td>43.38</td><td>37.99</td><td>27.16</td><td>68.38</td><td>59.50</td><td>44.68</td><td>48.50</td></tr><tr><td>KIVI</td><td></td><td>45.04</td><td>45.70</td><td>26.47</td><td>68.57</td><td>59.55</td><td>46.41</td><td>50.16</td></tr><tr><td>PolarQuant</td><td>3.9</td><td>45.18</td><td>44.48</td><td>26.23</td><td>68.25</td><td>60.07</td><td>45.24</td><td>49.78</td></tr><tr><td>TURBOQUANT (ours)</td><td>2.5</td><td>44.16</td><td>44.96</td><td>24.80</td><td>68.01</td><td>59.65</td><td>45.76</td><td>49.44</td></tr><tr><td>TURBOQUANT (ours)</td><td>3.5</td><td>45.01</td><td>45.31</td><td>26.00</td><td>68.63</td><td>59.95</td><td>46.17</td><td>50.06</td></tr><tr><td colspan="9">Ministral-7B-Instruct</td></tr><tr><td>Full Cache</td><td>16</td><td>47.53</td><td>49.06</td><td>26.09</td><td>66.83</td><td>53.50</td><td>47.90</td><td>49.89</td></tr></tbody></table>
 
-*Table 1: LongBench-V1 [10] results of various KV cache compression methods on Llama-3.1-8B- Instruct.*
+*Table 1: LongBench-V1 [10] results of various KV cache compression methods on Llama-3.1-8B-Instruct.*
 
-<table><thead><tr><th>Approach</th><th>d=200</th><th>d=1536</th><th>d=3072</th></tr></thead><tbody><tr><td>RabitQ ‘TURBOQUANT</td><td>597.25 0.0007</td><td>2267.59 0.0013</td><td>3957.19 0.0021</td></tr></tbody></table>
+<table><thead><tr><th>Approach</th><th>d=200</th><th>d=1536</th><th>d=3072</th></tr></thead><tbody><tr><td>RabitQ 'TURBOQUANT</td><td>597.25 0.0007</td><td>2267.59 0.0013</td><td>3957.19 0.0021</td></tr></tbody></table>
 
 *Table 2: Quantization time (in seconds) for different approaches across various dimensions using 4-bit quantization.*
 
+---
+
 **Docling Output:**
 
-Table 1: LongBench-V1 [10] results of various KV cache compression methods on Llama -3 . 1 -8B -Instruct .
+Table 1: LongBench-V1 [10] results of various KV cache compression methods on Llama-3.1-8B-Instruct.
 
 | Method                    | KV Size                       | SingleQA                      | MultiQA                       | Summarization                 | Few shot                      | Synthetic                     | Code                          | Average                       |                               |
 |---------------------------|-------------------------------|-------------------------------|-------------------------------|-------------------------------|-------------------------------|-------------------------------|-------------------------------|-------------------------------|-------------------------------|
@@ -221,21 +222,23 @@ Table 1: LongBench-V1 [10] results of various KV cache compression methods on Ll
 
 Table 2: Quantization time (in seconds) for different approaches across various dimensions using 4-bit quantization.
 
-| Approach             | d=200 | d=1536 | d=3072 |
-|----------------------|-------|--------|--------|
-| Product Quantization | 37.04 | 239.75 | 494.42 |
+| Approach             | d=200  | d=1536  | d=3072  |
+|----------------------|--------|---------|---------|
+| Product Quantization | 37.04  | 239.75  | 494.42  |
 | RabitQ               | 597.25 | 2267.59 | 3957.19 |
-| TurboQuant           | 0.0007 | 0.0013 | 0.0021 |
+| TurboQuant           | 0.0007 | 0.0013  | 0.0021  |
 
-
-<table style="width: 100%;">
+<table style="width: 100%; table-layout: fixed;">
   <tr>
-    <td width="50%">
-      A Raw HTML dump with no clear schema: headers, rows, and sections are not properly separated.
-    </td>
-    <td width="50%">
-      Docling converts the same content into a well-defined table schema 
-      <a href="[https://huggingface.co/docling-project/CodeFormulaV2](https://huggingface.co/docling-project/docling-models/tree/main/model_artifacts/tableformer)">TableFormer</a>
-    </td>
+    <td style="width: 50%;" align="center">⚠️ A raw HTML dump with no clear schema — headers, rows, and sections are not properly separated.</td>
+    <td style="width: 50%;" align="center">✅ Docling converts the same content into a well-defined table schema via <a href="https://huggingface.co/docling-project/docling-models/tree/main/model_artifacts/tableformer">TableFormer</a>.</td>
   </tr>
 </table>
+
+---
+
+## Conclusion
+
+Across all four element types tested, **Docling consistently outperforms Unstructured** for document parsing in RAG pipelines, particularly for complex content such as equations, algorithms, and multi-level tables. Unstructured performs adequately for simple prose but lacks the specialized models needed for structured or visual document elements.
+
+For RAG use cases involving academic papers, technical reports, or any documents with mixed content types, **Docling is the recommended parser**.
