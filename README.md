@@ -235,7 +235,7 @@ Table 2: Quantization time (in seconds) for different approaches across various 
     </td>
     <td width="50%">
       Docling converts the same content into a well-defined table schema 
-      <a href="https://huggingface.co/docling-project/CodeFormulaV2">CodeFormulaV2</a>
+      <a href="[https://huggingface.co/docling-project/CodeFormulaV2](https://huggingface.co/docling-project/docling-models/tree/main/model_artifacts/tableformer)">TableFormer</a>
     </td>
   </tr>
 </table>
