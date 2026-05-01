@@ -174,45 +174,36 @@ Algorithm 1 Interactive AI Training with Nemobot 1: H+ initial heuristic,k+1,R<Â
 
 ---
 
-## Equations
-
-<!-- <p align="center">
-  <img src="images/turbo_quant_equation.png" width="70%">
-</p> -->
+## Tables
 
 <p align="center">
   <em>Example taken from paper <a href="https://arxiv.org/pdf/2504.19874">TurboQuant</a></em>
 </p>
 
-<table style="width: 100%;">
+<table style="width: 100%; table-layout: fixed;">
   <tr>
-    <th style="text-align: center; width: 50%;">Unstructured Layout</th>
-    <th style="text-align: center; width: 50%;">Docling Layout</th>
+    <th style="text-align: center;">Unstructured Layout</th>
+    <th style="text-align: center;">Docling Layout</th>
   </tr>
   <tr>
-    <td width="50%"><img src="images/table1_unstructured.png" alt="Unstructured Layout" width="100%"/></td>
-    <td width="50%"><img src="images/table1_docling.png" alt="Docling Layout" width="100%"/></td>
+    <td><img src="images/table1_unstructured.png" width="100%"/></td>
+    <td><img src="images/table1_docling.png" width="100%"/></td>
   </tr>
-  <tr>
-    <td width="50%" markdown="1">
+</table>
+
 
 **Unstructured Output:**
-<table><thead><tr><th>Full Cache</th><th>16</th><th>45.29</th><th>45.16</th><th>Llama-3.1-8B-Instruct 26.55</th><th>68.38</th><th>59.54</th><th>46.28</th><th>50.06</th></tr></thead><tbody><tr><td>KIVI</td><td></td><td>43.38</td><td>37.99</td><td>27.16</td><td>68.38</td><td>59.50</td><td>44.68</td><td>48.50</td></tr><tr><td>KIVI</td><td></td><td>45.04</td><td>45.70</td><td>26.47</td><td>68.57</td><td>59.55</td><td>46.41</td><td>50.16</td></tr><tr><td>PolarQuant</td><td>3.9</td><td>45.18</td><td>44.48</td><td>26.23</td><td>68.25</td><td>60.07</td><td>45.24</td><td>49.78</td></tr><tr><td>TURBOQUANT (ours)</td><td>2.5</td><td>44.16</td><td>44.96</td><td>24.80</td><td>68.01</td><td>59.65</td><td>45.76</td><td>49.44</td></tr><tr><td>TURBOQUANT (ours)</td><td>3.5</td><td>45.01</td><td>45.31</td><td>26.00</td><td>68.63</td><td>59.95</td><td>46.17</td><td>50.06</td></tr><tr><td colspan="9">Ministral-7B-Instruct</td></tr><tr><td>Full Cache</td><td>16</td><td>47.53</td><td>49.06</td><td>26.09</td><td>66.83</td><td>53.50</td><td>47.90</td><td>49.89</td></tr></tbody></table>
 
+<table><thead><tr><th>Full Cache</th><th>16</th><th>45.29</th><th>45.16</th><th>Llama-3.1-8B-Instruct 26.55</th><th>68.38</th><th>59.54</th><th>46.28</th><th>50.06</th></tr></thead><tbody><tr><td>KIVI</td><td></td><td>43.38</td><td>37.99</td><td>27.16</td><td>68.38</td><td>59.50</td><td>44.68</td><td>48.50</td></tr><tr><td>KIVI</td><td></td><td>45.04</td><td>45.70</td><td>26.47</td><td>68.57</td><td>59.55</td><td>46.41</td><td>50.16</td></tr><tr><td>PolarQuant</td><td>3.9</td><td>45.18</td><td>44.48</td><td>26.23</td><td>68.25</td><td>60.07</td><td>45.24</td><td>49.78</td></tr><tr><td>TURBOQUANT (ours)</td><td>2.5</td><td>44.16</td><td>44.96</td><td>24.80</td><td>68.01</td><td>59.65</td><td>45.76</td><td>49.44</td></tr><tr><td>TURBOQUANT (ours)</td><td>3.5</td><td>45.01</td><td>45.31</td><td>26.00</td><td>68.63</td><td>59.95</td><td>46.17</td><td>50.06</td></tr><tr><td colspan="9">Ministral-7B-Instruct</td></tr><tr><td>Full Cache</td><td>16</td><td>47.53</td><td>49.06</td><td>26.09</td><td>66.83</td><td>53.50</td><td>47.90</td><td>49.89</td></tr></tbody></table>
 
 *Table 1: LongBench-V1 [10] results of various KV cache compression methods on Llama-3.1-8B- Instruct.*
 
-
 <table><thead><tr><th>Approach</th><th>d=200</th><th>d=1536</th><th>d=3072</th></tr></thead><tbody><tr><td>RabitQ â€˜TURBOQUANT</td><td>597.25 0.0007</td><td>2267.59 0.0013</td><td>3957.19 0.0021</td></tr></tbody></table>
-
 
 *Table 2: Quantization time (in seconds) for different approaches across various dimensions using 4-bit quantization.*
 
-
-  </td>
-    <td width="50%">
-
 **Docling Output:**
+
 Table 1: LongBench-V1 [10] results of various KV cache compression methods on Llama -3 . 1 -8B -Instruct .
 
 | Method                    | KV Size                       | SingleQA                      | MultiQA                       | Summarization                 | Few shot                      | Synthetic                     | Code                          | Average                       |                               |
@@ -230,17 +221,21 @@ Table 1: LongBench-V1 [10] results of various KV cache compression methods on Ll
 
 Table 2: Quantization time (in seconds) for different approaches across various dimensions using 4-bit quantization.
 
-| Approach             |    d=200 |    d=1536 |    d=3072 |
-|----------------------|----------|-----------|-----------|
-| Product Quantization |  37.04   |  239.75   |  494.42   |
-| RabitQ               | 597.25   | 2267.59   | 3957.19   |
-| TurboQuant           |   0.0007 |    0.0013 |    0.0021 |
+| Approach             | d=200 | d=1536 | d=3072 |
+|----------------------|-------|--------|--------|
+| Product Quantization | 37.04 | 239.75 | 494.42 |
+| RabitQ               | 597.25 | 2267.59 | 3957.19 |
+| TurboQuant           | 0.0007 | 0.0013 | 0.0021 |
 
 
-  </td>
-  </tr>
+<table style="width: 100%;">
   <tr>
-    <td width="50%">Unstructured could not parse the equation as it renders equations from text only. (No specific Equation Recognition model is used)</td>
-    <td width="50%">Docling uses a VLM model for equation recognition from image to text. <a href="https://huggingface.co/docling-project/CodeFormulaV2">CodeFormulaV2</a></td>
+    <td width="50%">
+      A Raw HTML dump with no clear schema: headers, rows, and sections are not properly separated.
+    </td>
+    <td width="50%">
+      Docling converts the same content into a well-defined table schema 
+      <a href="https://huggingface.co/docling-project/CodeFormulaV2">CodeFormulaV2</a>
+    </td>
   </tr>
 </table>
