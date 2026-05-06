@@ -258,7 +258,7 @@ For RAG use cases involving academic papers, technical reports, or any documents
 <div align="center">
   <img src="images/flowchart1.png" width="100%" alt="Flowchart Architecture Diagram" />
   <br/>
-  <sub><em>Example taken from <a href="https://arxiv.org/pdf/2604.21896">Nemobot Games</a></em></sub>
+  <em>Example taken from <a href="https://arxiv.org/pdf/2604.21896">Nemobot Games</a></em>
 </div>
 
 
@@ -282,8 +282,12 @@ For RAG use cases involving academic papers, technical reports, or any documents
 | `I` | Refined Heuristic H(k+1) |
 | `J` | Improved Gameplay / Learning Cycle Established |
 
+### 📋 Full Architecture Description
+
+The diagram presents a **closed-loop AI learning ecosystem** built around four tightly coupled layers: LLM-driven orchestration, game execution, collaborative interaction, and heuristic optimization. **LLM Servers** and **LLM Functions** form the orchestration backbone, directing executable logic into the **Coding Pad**, which defines and runs game environments. Outputs flow into the **Chat Playground** — the central hub where agents interact, experiment, and generate training data. A dashed **Collaborative Learning** region houses autonomous agents that play freely within the playground, injecting emergent behavioral signals into the system. Simultaneously, the **Analysis Portal** consumes this gameplay data to iteratively refine heuristics from $H^k$ to $H^{k+1}$, which are continuously fed back into the loop to shape future agent behavior. The result is a self-improving cycle — where gameplay drives learning, learning refines heuristics, and heuristics elevate gameplay.
+
 </td>
-<td width="50%" valign="top">
+<td width="50%" valign="center">
 
 ### 🔗 Dependencies
 
@@ -309,11 +313,6 @@ For RAG use cases involving academic papers, technical reports, or any documents
 </td>
 </tr>
 </table>
-
-
-### 📋 Full Architecture Description
-
-The diagram presents a **closed-loop AI learning ecosystem** built around four tightly coupled layers: LLM-driven orchestration, game execution, collaborative interaction, and heuristic optimization. **LLM Servers** and **LLM Functions** form the orchestration backbone, directing executable logic into the **Coding Pad**, which defines and runs game environments. Outputs flow into the **Chat Playground** — the central hub where agents interact, experiment, and generate training data. A dashed **Collaborative Learning** region houses autonomous agents that play freely within the playground, injecting emergent behavioral signals into the system. Simultaneously, the **Analysis Portal** consumes this gameplay data to iteratively refine heuristics from $H^k$ to $H^{k+1}$, which are continuously fed back into the loop to shape future agent behavior. The result is a self-improving cycle — where gameplay drives learning, learning refines heuristics, and heuristics elevate gameplay.
 
 
 
