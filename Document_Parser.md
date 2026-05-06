@@ -243,84 +243,77 @@ Across all four element types tested, **Docling consistently outperforms Unstruc
 
 For RAG use cases involving academic papers, technical reports, or any documents with mixed content types, **Docling is the recommended parser**.
 
+---
+
+## 🔄 Flowcharts & Architectures
+
+**Problem:** Architectural diagrams and flowcharts are widely used to represent system workflows, control logic, and interactions between components. However, these visual structures are often difficult for LLMs to interpret reliably due to layout ambiguity, spatial dependencies, and implicit process relations encoded only through arrows and positioning.
+
+**Solution:** We convert flowcharts into a structured **functional dependency representation** that:
+- Replaces visual layout with **explicit dependency relations** between process instances and decision nodes
+- Preserves the **logical execution flow** without relying on spatial or positional cues
+- Improves **reasoning, retrieval, and downstream processing** for LLM-based pipelines
 
 
-## Flowcharts & Architectures
+<div align="center">
+  <img src="images/flowchart1.png" width="100%" alt="Flowchart Architecture Diagram" />
+  <br/>
+  <sub><em>Example taken from <a href="https://arxiv.org/pdf/2604.21896">Nemobot Games</a></em></sub>
+</div>
 
-Architectural diagrams and flowcharts are widely used to represent system workflows, control logic, and interactions between components. However, these visual structures are often difficult for LLMs to interpret reliably due to layout ambiguity, spatial dependencies, and implicit process relations encoded only through arrows and positioning.
 
-To reduce this ambiguity, we convert flowcharts into a structured **functional dependency representation**. Instead of relying on visual interpretation, the workflow is represented as explicit dependency relations between process instances, decision nodes, and execution stages. This provides a generalized and LLM-friendly representation that preserves the logical execution flow while improving reasoning, retrieval, and downstream processing.
 
-<p align="center">
-  <em>
-    Example taken from paper
-    <a href="https://arxiv.org/pdf/2604.21896">Nemobot Games</a>
-  </em>
-</p>
-
-<table width="100%" style="width:100%; border-collapse: collapse;">
-  <tr>
-    <td align="center" style="padding: 0;">
-      <img src="images/flowchart1.png" width="100%"/>
-    </td>
-  </tr>
-
-  <tr>
-    <td style="padding-top: 18px;">
-
-<table width="100%" style="width:100%; table-layout: fixed;">
+<table width="100%">
 <tr>
+<td width="50%" valign="top">
 
-<td width="50%" valign="top" style="padding-right: 16px;">
+### 🧩 Functional Blocks
 
-### Functional Blocks
-
-```text
-A = LLM Servers Available
-B = LLM Functions Defined
-C = Coding Pad Operational
-D = Games Defined
-E = Chat Playground Active
-F = Collaborative Learning Agents Active
-G = Training Data Generated
-H = Analysis Portal Updates Heuristics
-I = Refined Heuristic H(k+1)
-J = Improved Gameplay / Learning Cycle Established
-````
-
-</td>
-
-<td width="50%" valign="top" style="padding-left: 16px;">
-
-### Dependencies
-
-```text
-A (YES) -> B
-A (NO)  -> E
-B (YES) -> C
-B (NO)  -> E
-C (YES) -> D
-C (NO)  -> E
-D (YES) -> F
-D (NO)  -> E
-C (EXECUTE) -> E
-F (PLAY FREELY) -> E
-E (GENERATES DATA) -> G
-G -> H
-H -> I
-I -> E
-E (ITERATIVE FEEDBACK) -> J
-F (COLLABORATIVE FEEDBACK) -> J
-```
+| ID | Description |
+|----|-------------|
+| `A` | LLM Servers Available |
+| `B` | LLM Functions Defined |
+| `C` | Coding Pad Operational |
+| `D` | Games Defined |
+| `E` | Chat Playground Active |
+| `F` | Collaborative Learning Agents Active |
+| `G` | Training Data Generated |
+| `H` | Analysis Portal Updates Heuristics |
+| `I` | Refined Heuristic H(k+1) |
+| `J` | Improved Gameplay / Learning Cycle Established |
 
 </td>
+<td width="50%" valign="top">
 
+### 🔗 Dependencies
+
+| From | Condition | To |
+|------|-----------|-----|
+| `A` | YES | `B` |
+| `A` | NO | `E` |
+| `B` | YES | `C` |
+| `B` | NO | `E` |
+| `C` | YES | `D` |
+| `C` | NO | `E` |
+| `D` | YES | `F` |
+| `D` | NO | `E` |
+| `C` | EXECUTE | `E` |
+| `F` | PLAY FREELY | `E` |
+| `E` | GENERATES DATA | `G` |
+| `G` | — | `H` |
+| `H` | — | `I` |
+| `I` | — | `E` |
+| `E` | ITERATIVE FEEDBACK | `J` |
+| `F` | COLLABORATIVE FEEDBACK | `J` |
+
+</td>
 </tr>
 </table>
 
-  </td>
-  </tr>
-</table>
+
+### 📋 Full Architecture Description
+
+The diagram presents a **closed-loop AI learning ecosystem** built around four tightly coupled layers: LLM-driven orchestration, game execution, collaborative interaction, and heuristic optimization. **LLM Servers** and **LLM Functions** form the orchestration backbone, directing executable logic into the **Coding Pad**, which defines and runs game environments. Outputs flow into the **Chat Playground** — the central hub where agents interact, experiment, and generate training data. A dashed **Collaborative Learning** region houses autonomous agents that play freely within the playground, injecting emergent behavioral signals into the system. Simultaneously, the **Analysis Portal** consumes this gameplay data to iteratively refine heuristics from $H^k$ to $H^{k+1}$, which are continuously fed back into the loop to shape future agent behavior. The result is a self-improving cycle — where gameplay drives learning, learning refines heuristics, and heuristics elevate gameplay.
 
 
 
