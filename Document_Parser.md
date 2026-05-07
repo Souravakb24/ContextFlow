@@ -316,7 +316,7 @@ The diagram presents a **closed-loop AI learning ecosystem** built around four t
 
 ---
 
-## Diagram Reconstruction
+## 🖼 Diagram Reconstruction
 
 **Problem:** Architectural diagrams and technical figures are widely used to represent systems, geometries, and visual structures. However, these visual artifacts are difficult for LLMs to reconstruct reliably due to spatial ambiguity, implicit positional encoding, and the gap between pixel-level layout and the underlying mathematical or geometric logic.
 
