@@ -256,7 +256,7 @@ For RAG use cases involving academic papers, technical reports, or any documents
 
 
 <div align="center">
-  <img src="images/flowchart1.png" width="100%" alt="Flowchart Architecture Diagram" />
+  <img src="images/flowchart1.png" width="60%" alt="Flowchart Architecture Diagram" />
   <br/>
   <em>Example taken from <a href="https://arxiv.org/pdf/2604.21896">Nemobot Games</a></em>
 </div>
@@ -314,10 +314,19 @@ The diagram presents a **closed-loop AI learning ecosystem** built around four t
 </tr>
 </table>
 
-
-
 ---
 
+## Diagram Reconstruction
+
+**Problem:** Architectural diagrams and technical figures are widely used to represent systems, geometries, and visual structures. However, these visual artifacts are difficult for LLMs to reconstruct reliably due to spatial ambiguity, implicit positional encoding, and the gap between pixel-level layout and the underlying mathematical or geometric logic.
+
+**Solution:** We convert diagram images into a structured **geometric-functional representation** that:
+- Replaces pixel-level visual layout with **explicit equation-based descriptions** of shapes, curves, and positional relationships
+- Preserves the **spatial and geometric execution logic** without relying on raw image interpretation or coordinate guessing
+- Improves **planning, code generation, and faithful reconstruction** for LLM-based matplotlib pipelines
 
 
-
+<div align="center">
+  <img src="images/Agentic_fig_recon.png" width="100%" />
+  <br/>
+</div>
