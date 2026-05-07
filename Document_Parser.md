@@ -325,5 +325,13 @@ The diagram presents a **closed-loop AI learning ecosystem** built around four t
 - Preserves the **spatial and geometric execution logic** without relying on raw image interpretation or coordinate guessing
 - Improves **planning, code generation, and faithful reconstruction** for LLM-based matplotlib pipelines
 
+<div align="center">
+  <img src="images/Agentic_fig_recon.png" width="100%" />
+  <br/>
+</div>
+
+
+
+
 
 
