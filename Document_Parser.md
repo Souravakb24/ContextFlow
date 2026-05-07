@@ -332,6 +332,13 @@ The diagram presents a **closed-loop AI learning ecosystem** built around four t
 
 
 
+<div align="center">
+  <em>Exmaple of Diagram Reconstruction</em>
+  <img src="images/fig_recon_example.png" width="100%" alt="Exmaple of Diagram Reconstruction"  />
+  <br/>
+</div>
+
+
 
 
 
