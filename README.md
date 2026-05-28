@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <img src="rag_pipeline.png" alt="ContextFlow RAG Pipeline" width="50%">
+  <img src="rag_pipeline.png" alt="ContextFlow RAG Pipeline" width="100%">
 </p>
 
 <p align="center">
