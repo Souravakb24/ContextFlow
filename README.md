@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <b>Full Artietecture</b>
+  <b>Full Workflow</b>
 </p>
 
 
