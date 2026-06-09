@@ -18,7 +18,7 @@
 ---
 
 Working demmo of the Project
-- **Demo Video** — [Video](https://canva.link/o3lzwrv67yh3x9v)
+- **Demo Video** — [Video](https://www.linkedin.com/posts/souravakumarbehera_generativeai-rag-documentai-ugcPost-7469644759771369473--TQa/?utm_source=share&utm_medium=member_desktop&rcm=ACoAADI54ksBepyzRWQPfz-8n-U_Z5Ku2PQ45GE)
 
 
 # RAG Document Parser Benchmark: Docling vs Unstructured
