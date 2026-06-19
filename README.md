@@ -17,8 +17,13 @@
 
 ---
 
-Working demmo of the Project
-- **Demo Video** — [Video](https://www.linkedin.com/posts/souravakumarbehera_generativeai-rag-documentai-ugcPost-7469644759771369473--TQa/?utm_source=share&utm_medium=member_desktop&rcm=ACoAADI54ksBepyzRWQPfz-8n-U_Z5Ku2PQ45GE)
+## Working demmo of the Project
+
+### OmniContext
+- **LinkedIn Post & Demo Video:** https://www.linkedin.com/feed/update/urn:li:activity:7469644804176400384/
+
+### OmniResearch
+- **LinkedIn Post & Demo Video:** https://www.linkedin.com/feed/update/urn:li:activity:7473613850467274752/
 
 
 # RAG Document Parser Benchmark: Docling vs Unstructured
